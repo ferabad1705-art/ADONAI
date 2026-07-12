@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADONAI Distribuidora | Catálogo completo</title>
+  <meta name="description" content="Catálogo ADONAI Distribuidora - Herramientas, ferretería, hogar y construcción." />
+  <style>
+    :root{
+      --bg:#090909;
+      --bg2:#141414;
+      --card:#181818;
+      --line:rgba(255,255,255,.12);
+      --orange:#ff7300;
+      --orange2:#ff9f1c;
+      --yellow:#ffd000;
+      --text:#f7f7f7;
+      --muted:#c9c9c9;
+      --green:#24d366;
+      --red:#ff3b30;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255,115,0,.32), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(255,208,0,.22), transparent 20%),
+        linear-gradient(180deg,#050505 0%,#101010 45%,#070707 100%);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(16px);
+      background:rgba(5,5,5,.76);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{max-width:1240px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:.5px}
+    .mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--orange),var(--yellow));display:grid;place-items:center;color:#111;font-weight:1000;box-shadow:0 0 28px rgba(255,115,0,.42)}
+    .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.1px;font-weight:700;margin-top:2px}
+    .navlinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{font-size:13px;font-weight:800;color:#eee;border:1px solid var(--line);border-radius:999px;padding:9px 12px;background:rgba(255,255,255,.04)}
+    .hero{max-width:1240px;margin:0 auto;padding:58px 18px 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;border:1px solid rgba(255,208,0,.35);background:rgba(255,208,0,.1);color:#ffe66d;font-weight:900;font-size:13px;margin-bottom:18px}
+    h1{font-size:clamp(38px,6vw,76px);line-height:.92;margin:0 0 18px;font-weight:1000;letter-spacing:-2.5px}
+    h1 span{color:var(--orange2);text-shadow:0 0 30px rgba(255,115,0,.45)}
+    .lead{font-size:clamp(16px,2vw,22px);color:#e7e7e7;line-height:1.45;max-width:680px;margin:0 0 26px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:14px 18px;font-weight:950;border:1px solid transparent;transition:.2s transform,.2s box-shadow}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#101010;box-shadow:0 15px 35px rgba(255,115,0,.28)}
+    .btn-wa{background:var(--green);color:#07140b;box-shadow:0 15px 30px rgba(36,211,102,.22)}
+    .btn-dark{background:#171717;border-color:var(--line);color:#fff}
+    .hero-card{border:1px solid rgba(255,115,0,.28);background:linear-gradient(145deg,rgba(255,115,0,.12),rgba(255,255,255,.04));border-radius:30px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,.45)}
+    .hero-card .big{font-size:48px;font-weight:1000;color:var(--yellow);line-height:1}
+    .hero-card p{color:#eee;font-size:17px;line-height:1.45}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .trust div{background:rgba(0,0,0,.26);border:1px solid var(--line);border-radius:18px;padding:14px;font-weight:900;color:#fff}
+    .trust small{display:block;color:var(--muted);font-weight:700;margin-top:4px}
+    section{max-width:1240px;margin:0 auto;padding:26px 18px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .section-head h2{font-size:clamp(28px,4vw,48px);margin:0;font-weight:1000;letter-spacing:-1.5px}
+    .section-head p{margin:0;color:var(--muted);max-width:520px;line-height:1.45}
+    .notice{border:1px solid rgba(255,208,0,.38);background:linear-gradient(135deg,rgba(255,208,0,.16),rgba(255,115,0,.09));padding:16px 18px;border-radius:20px;margin:0 0 24px;font-weight:850;color:#fff}
+    .category-title{margin:32px 0 16px;display:flex;align-items:center;gap:12px;font-size:25px;font-weight:1000;letter-spacing:-.5px}
+    .category-title:before{content:"";width:12px;height:32px;border-radius:99px;background:linear-gradient(180deg,var(--yellow),var(--orange))}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32);display:flex;flex-direction:column;min-height:100%}
+    .card:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--orange),var(--yellow));}
+    .imgbox{height:220px;background:#fff;display:grid;place-items:center;padding:14px;border-bottom:1px solid var(--line)}
+    .imgbox img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+    .placeholder{width:100%;height:100%;border-radius:18px;background:radial-gradient(circle at 20% 10%,rgba(255,208,0,.28),transparent 35%),linear-gradient(135deg,#222,#050505);display:grid;place-items:center;text-align:center;padding:18px;color:#fff;border:1px solid rgba(255,255,255,.12)}
+    .placeholder strong{display:block;font-size:20px;color:var(--yellow);margin-bottom:8px}
+    .content{padding:18px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .topline{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .code{font-size:12px;font-weight:1000;color:#111;background:linear-gradient(135deg,var(--yellow),var(--orange));padding:7px 9px;border-radius:999px;white-space:nowrap}
+    .brandtag{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#ffbf69;font-weight:1000}
+    .title{font-size:18px;line-height:1.18;font-weight:1000;margin:0;color:#fff}
+    .desc{margin:0;color:var(--muted);line-height:1.35;font-size:14px;min-height:38px}
+    .price{font-size:28px;line-height:1;font-weight:1000;color:var(--yellow);margin-top:auto}
+    .subprice{font-size:12px;color:#bdbdbd;font-weight:800;margin-top:-6px}
+    .card .btn{width:100%;padding:12px 13px;border-radius:13px;margin-top:4px;font-size:14px}
+    .stock{display:inline-flex;align-items:center;gap:6px;color:#7CFF9D;font-size:12px;font-weight:900}
+    .stock:before{content:"";width:8px;height:8px;border-radius:50%;background:#7CFF9D;box-shadow:0 0 13px #7CFF9D}
+    .footer{margin-top:30px;border-top:1px solid var(--line);background:#050505}
+    .footgrid{max-width:1240px;margin:0 auto;padding:34px 18px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px;color:#ddd}
+    .footgrid h3{margin:0 0 12px;font-size:24px;color:#fff}
+    .footgrid p{margin:0 0 9px;line-height:1.45;color:#cfcfcf}
+    .floating-wa{position:fixed;right:18px;bottom:18px;z-index:20;background:var(--green);color:#041006;border-radius:999px;padding:14px 18px;font-weight:1000;box-shadow:0 14px 35px rgba(36,211,102,.32)}
+    @media (max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.hero-card{max-width:640px}.footgrid{grid-template-columns:1fr 1fr}}
+    @media (max-width:760px){.nav{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}.grid{grid-template-columns:repeat(2,1fr);gap:14px}.imgbox{height:185px}.trust{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.footgrid{grid-template-columns:1fr}.floating-wa{left:18px;text-align:center}.hero{padding-top:36px}}
+    @media (max-width:480px){.grid{grid-template-columns:1fr}.imgbox{height:230px}.btn{width:100%}h1{font-size:42px}}
+  </style>
+</head>
+<body>
+  <!-- PARA EDITAR WHATSAPP: reemplazar 5491100000000 por tu número real con código país, sin + ni espacios. -->
+  <div class="topbar">
+    <div class="nav">
+      <a class="brand" href="#inicio"><span class="mark">A</span><span>ADONAI DISTRIBUIDORA<small>Herramientas · Ferretería · Hogar · Construcción</small></span></a>
+      <div class="navlinks">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#hogar">Hogar</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="inicio" class="hero">
+    <div>
+      <div class="badge">🔥 STOCK ACTUAL · 18 PRODUCTOS CARGADOS</div>
+      <h1>Catálogo <span>ADONAI</span> de alto impacto</h1>
+      <p class="lead">Herramientas, ferretería, hogar y construcción. Pedí disponibilidad por WhatsApp y armamos combos por volumen.</p>
+      <div class="hero-actions">
+        <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20completo" target="_blank">📲 Consultar por WhatsApp</a>
+        <a class="btn btn-primary" href="#catalogo">Ver catálogo completo</a>
+        <a class="btn btn-dark" href="mailto:ventas@adonaiherramientas.com?subject=Consulta%20desde%20web%20ADONAI&body=Hola%20ADONAI%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo.">Enviar email</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <div class="big">$400.000</div>
+      <p><strong>Compra mínima mayorista.</strong><br>Precios sujetos a disponibilidad de stock. Consultanos por combos, descuentos por volumen y entregas.</p>
+      <div class="trust">
+        <div>Atención rápida<small>WhatsApp directo</small></div>
+        <div>Stock real<small>Productos cargados</small></div>
+        <div>Mayorista<small>Y venta minorista</small></div>
+      </div>
+    </aside>
+  </main>
+
+  <section id="catalogo">
+    <div class="section-head">
+      <div>
+        <h2>Catálogo completo</h2>
+        <p>Estos son los 18 artículos de la lista que pasaste, cargados uno por uno, visibles directamente en la web.</p>
+      </div>
+    </div>
+    <div class="notice">📅 Precios sujetos a disponibilidad de stock. Para cerrar compra, confirmar por WhatsApp. Compra mínima mayorista: <strong>$400.000</strong>.</div>
+
+    <h3 id="herramientas" class="category-title">Herramientas y máquinas</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="imgbox"><div class="placeholder"><div><strong>Garden Plus</strong>Bomba periférica<br>Foto referencial</div></div></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Garden Plus / Lüsqtoff</span><span class="code">Bomba</span></div>
+          <h3 class="title">Bomba Periférica Garden Plus</h3>
+          <p class="desc">Caja x6 unidades. Ideal para elevación y movimiento de agua.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$35.000</div><div class="subprice">c/u · Caja x6 unidades</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Bomba%20Perif%C3%A9rica%20Garden%20Plus%20%24%2035.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HIDROLAVADORES%20Y%20ASPIRADORES/HIDROLAVADORAS/HL100-7/HL100-7_web.jpg" alt="Hidrolavadora HL100 Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">HL100</span></div>
+          <h3 class="title">Hidrolavadora HL100</h3>
+          <p class="desc">Hidrolavadora alta presión 1200W, compacta para hogar y autos.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$98.200</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Hidrolavadora%20HL100%20%24%2098.200" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/4.%20HIDROLAVADORAS/HL-120/HL-120-%28portada%29.jpg" alt="Hidrolavadora HL120 Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">HL120</span></div>
+          <h3 class="title">Hidrolavadora Eléctrica HL120</h3>
+          <p class="desc">Hidrolavadora eléctrica 1200W. Práctica, versátil y fácil de guardar.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$106.300</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Hidrolavadora%20El%C3%A9ctrica%20HL120%20%24%20106.300" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/10.%20TALLER%20Y%20RACING/LQCT107-8K/LQCT107-8K%281%29_01.jpg" alt="LQCT107-8K caja de herramientas y taladro"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">LQCT107-8K</span></div>
+          <h3 class="title">Caja de herramientas 106 piezas + Taladro Percutor 710W</h3>
+          <p class="desc">Kit completo con valija, herramientas y taladro percutor.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$167.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20LQCT107-8K%20Caja%20de%20herramientas%20%24%20167.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HERRAMIENTAS_ELECTRICAS/MDL1750-8/MDL1750-8_1_web.jpg" alt="MDL1750-8 martillo demoledor Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">MDL1750-8</span></div>
+          <h3 class="title">MDL1750-8</h3>
+          <p class="desc">Martillo demoledor 1750W / 1700W, ideal para trabajo pesado.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$279.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20MDL1750-8%20%24%20279.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HERRAMIENTAS_ELECTRICAS/MDL1750-8/MDL1750-8_1_web.jpg" alt="Martillo demoledor 1700W Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">1700W</span></div>
+          <h3 class="title">Martillo Demoledor 1700W</h3>
+          <p class="desc">Equipo de demolición para obra, refacción y construcción.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$279.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Martillo%20Demoledor%201700W%20%24%20279.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://acdn-us.mitiendanube.com/stores/005/563/311/products/chatgpt-image-8-abr-2026-21_59_13-24201f225966224dea17756963751122-1024-1024.webp" alt="GP40-7BK mini motosierra Garden Plus"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Garden Plus / Lüsqtoff</span><span class="code">GP40-7BK</span></div>
+          <h3 class="title">Mini motosierra a batería</h3>
+          <p class="desc">Electrosierra inalámbrica 18V para poda y ramas.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$76.400</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20GP40-7BK%20Mini%20motosierra%20%24%2076.400" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/COMPRESORES_DE_AIRE/MCL150-8/MCL150-8_1_web.jpg" alt="MCL150-8 mini compresor Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">MCL150-8</span></div>
+          <h3 class="title">Mini compresor 12V</h3>
+          <p class="desc">Compresor portátil 12V, ideal auto, inflables y emergencias.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$60.900</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20MCL150-8%20Mini%20compresor%2012V%20%24%2060.900" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/17.%20HERRAMIENTAS%20NEUM%C3%81TICAS/AA-5000K/AA-5000K_para-web.png" alt="AA-5000K kit compresor Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">AA-5000K</span></div>
+          <h3 class="title">Kit compresor 5 piezas</h3>
+          <p class="desc">Para sopletear, lavar, inflar y pintar. Incluye accesorios.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$36.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20AA-5000K%20Kit%20compresor%205%20piezas%20%24%2036.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://acdn-us.mitiendanube.com/stores/001/485/598/products/d_nq_np_923646-mlu74110440402_012024-o-22ceeaa8d361fea15117089576485347-1024-1024.webp" alt="Generador Garden Plus GP2500"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Garden Plus / Lüsqtoff</span><span class="code">GP2500</span></div>
+          <h3 class="title">Generador Garden Plus GP2500</h3>
+          <p class="desc">Generador naftero 2000W, motor 4 tiempos, uso hogar/obra.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$281.500</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Generador%20Garden%20Plus%20GP2500%20%24%20281.500" target="_blank">Consultar</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 id="hogar" class="category-title">Hogar, cocina y exterior</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="imgbox"><img src="https://acdn-us.mitiendanube.com/stores/006/922/465/products/jk-1008-9721cfb3760d20fadb17803426879963-1024-1024.webp" alt="JK-1008P calefactor Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">JK-1008P</span></div>
+          <h3 class="title">Calefactor para garrafa con sombrilla y pelota</h3>
+          <p class="desc">Calefactor exterior tipo hongo para gas envasado.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$268.300</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20JK-1008P%20Calefactor%20%24%20268.300" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://dcdn-us.mitiendanube.com/stores/932/707/products/whatsapp-image-2025-05-27-at-11-24-44-e69ff1a2588c0cc11817486965962631-1024-1024.webp" alt="Disco paellero con patas desmontables"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Stock ADONAI</span><span class="code">Paellero</span></div>
+          <h3 class="title">Disco Paellero con patas desmontables y tapa</h3>
+          <p class="desc">Ideal exterior, camping, patio y cocina familiar.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$57.200</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Disco%20Paellero%20con%20tapa%20%24%2057.200" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HOGAR/IGL600-8/IGL600-8_web.jpg" alt="IGL600-8 inflador de globos eléctrico"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">IGL600-8</span></div>
+          <h3 class="title">Inflador eléctrico para globos</h3>
+          <p class="desc">Inflador 600W con dos picos. Ideal eventos y decoración.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$17.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20IGL600-8%20Inflador%20de%20globos%20%24%2017.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://acdn-us.mitiendanube.com/stores/884/906/products/plancha-bife-brogas-2-hornallas1-213aec6c0c3d02c9f816742431662154-1024-1024.webp" alt="Bifera plancheta 6145"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Brogas / Stock ADONAI</span><span class="code">6145</span></div>
+          <h3 class="title">Bifera / Plancheta mediana de 2 hornallas</h3>
+          <p class="desc">Plancha para cocina, parrilla y brasas. Medida mediana.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$30.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%206145%20Plancheta%202%20hornallas%20%24%2030.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/OUTDOOR/CMPL80-7/CMPl80-7_2_web.jpg" alt="Carro plegable 80kg Lüsqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">80 KG</span></div>
+          <h3 class="title">Carro plegable 80 kg</h3>
+          <p class="desc">Carro multiuso plegable, práctico para transporte y camping.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$99.900</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Carro%20plegable%2080%20kg%20%24%2099.900" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HOGAR/BCHL60-8/BCHL60-8_5.jpg" alt="BCHL60-8 bacha acero inoxidable"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">BCHL60-8</span></div>
+          <h3 class="title">Bacha de cocina acero inoxidable</h3>
+          <p class="desc">Bacha de acero inoxidable 600 x 420 mm aprox.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$58.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20BCHL60-8%20Bacha%20de%20cocina%20%24%2058.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/3.%20HOGAR%20Y%20RECREACI%C3%93N/LE400/LE400_%28baja%29.jpg" alt="Escalera plegable 4x4 16 escalones"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">4x4</span></div>
+          <h3 class="title">Escalera plegable multipropósito 4x4</h3>
+          <p class="desc">16 escalones. Multiposición, plegable y reforzada.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$172.000</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Escalera%20plegable%204x4%2016%20escalones%20%24%20172.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="category-title">Construcción y manuales</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="imgbox"><img src="https://www.lusqtoff.com.ar/2023/uploads/Productos/NUEVOS/HERRAMIENTAS_MANUALES/L7102/L7102_web.jpg" alt="Cuchara de albañil Lusqtoff"></div>
+        <div class="content">
+          <div class="topline"><span class="brandtag">Lüsqtoff</span><span class="code">Caja x6</span></div>
+          <h3 class="title">Cucharas de albañil Lusqtoff</h3>
+          <p class="desc">Caja x6 unidades. Mango de madera y hoja pulido espejo.</p>
+          <span class="stock">Consultar stock</span>
+          <div class="price">$83.000</div><div class="subprice">Caja x6 unidades</div>
+          <a class="btn btn-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20Cucharas%20de%20alba%C3%B1il%20Lusqtoff%20Caja%20x6%20%24%2083.000" target="_blank">Consultar</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer id="contacto" class="footer">
+    <div class="footgrid">
+      <div>
+        <h3>ADONAI DISTRIBUIDORA</h3>
+        <p>Herramientas · Ferretería · Hogar · Construcción</p>
+        <p>Precios sujetos a disponibilidad de stock.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>WhatsApp: reemplazar número por el real.</p>
+        <p>Email: ventas@adonaiherramientas.com</p>
+      </div>
+      <div>
+        <h3>Atención</h3>
+        <p>Consultanos por disponibilidad, combos y descuentos por volumen.</p>
+        <p>Compra mínima mayorista: $400.000</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/5491100000000?text=Hola%20ADONAI%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo" target="_blank">📲 WhatsApp</a>
+</body>
+</html>
